@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcel Masllorens | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7f3ee;
+            color: #282438;
+            font-family: 'Trebuchet MS', sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5dce8;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8062a8;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #51465e;
+            margin-left: 22px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #a17acb;
+        }
+
+        .hero {
+            min-height: 75vh;
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 85% 30%, #e8d9f2 0, transparent 30%),
+                radial-gradient(circle at 15% 85%, #f4dfd9 0, transparent 28%),
+                #f7f3ee;
+        }
+
+        .tag {
+            color: #8969b0;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: 1.05;
+            max-width: 850px;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #9673bd;
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 520px;
+            font-size: 18px;
+            color: #6d6475;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            width: fit-content;
+            padding: 13px 25px;
+            background: #8062a8;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #604584;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 90px 10%;
+        }
+
+        .section-label {
+            color: #9673bd;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 38px;
+            margin-bottom: 25px;
+        }
+
+        .about-text {
+            max-width: 700px;
+            color: #6d6475;
+            font-size: 17px;
+        }
+
+        .projects {
+            background: #eee8f2;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .project {
+            min-height: 220px;
+            padding: 25px;
+            background: #f9f5f9;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px #65508018;
+        }
+
+        .project .number {
+            color: #a88bc8;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .project p {
+            color: #81768b;
+            font-size: 14px;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #6d6475;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #91869a;
+            font-size: 13px;
+            border-top: 1px solid #e5dce8;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero {
+                min-height: 65vh;
+                padding: 75px 8%;
+            }
+
+            section {
+                padding: 65px 8%;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">MM.</div>
+
+        <nav>
+            <a href="#about">Sobre mi</a>
+            <a href="#projects">Projectes</a>
+            <a href="#contact">Contacte</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <div class="tag">Portfolio creatiu · 2026</div>
+
+            <h1>Hola, sóc<br>
+                <span>Marcel Masllorens.</span>
+            </h1>
+
+            <p>
+                Benvingut al meu petit univers creatiu.
+                Un espai on comparteixo les meves idees,
+                projectes i experiments artístics.
+            </p>
+
+            <a href="#projects" class="button">
+                Descobreix els meus projectes →
+            </a>
+        </div>
+
+        <section id="about">
+            <div class="section-label">01 / Sobre mi</div>
+
+            <h2>Una mica sobre mi.</h2>
+
+            <p class="about-text">
+                Sóc en Marcel, estudiant d'animació i apassionat
+                pel món visual i creatiu. M'agrada experimentar,
+                explicar històries i donar vida a noves idees.
+
+                Aquesta web és el meu espai personal per compartir
+                el que faig i tot allò que m'inspira.
+            </p>
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="section-label">02 / El meu treball</div>
+
+            <h2>Projectes seleccionats.</h2>
+
+            <div class="project-grid">
+
+                <article class="project">
+                    <div class="number">PROJECTE 01</div>
+                    <h3>Il·lustració</h3>
+                    <p>Un espai per als meus dibuixos.</p>
+                </article>
+
+                <article class="project">
+                    <div class="number">PROJECTE 02</div>
+                    <h3>Animació</h3>
+                    <p>Històries que cobren vida.</p>
+                </article>
+
+                <article class="project">
+                    <div class="number">PROJECTE 03</div>
+                    <h3>Experimentació</h3>
+                    <p>Idees, proves i nous universos.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="section-label">03 / Contacte</div>
+
+            <h2>Parlem?</h2>
+
+            <p>
+                Tens alguna idea o projecte interessant?
+                M'encantaria saber-ne més!
+            </p>
+
+            <a href="mailto:EL_TEU_CORREU@example.com"
+               class="button">
+                Escriu-me →
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Marcel Masllorens · Fet amb creativitat ♡
+    </footer>
+
+</body>
+</html>
