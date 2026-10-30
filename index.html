@@ -290,8 +290,8 @@ padding: 26px 5vw 22px;
 .hero-content {
   position: relative;
   z-index: 3;
-  width: min(100%, 1000px);
-  margin: 15px auto 25px;
+  width: 100%;
+  margin: 15px 0 25px;
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -417,7 +417,7 @@ padding: 26px 5vw 22px;
 <main class="hero">
 
   <header class="top-line">
-    <div class="logo">MM®</div>
+    <div class="logo">MM</div>
     <div>3D GENERALIST · ARTIST</div>
     <div>PORTFOLIO — 2026</div>
   </header>
@@ -438,7 +438,6 @@ padding: 26px 5vw 22px;
     <div class="project-info">
       <div>
         <h2 id="projectTitle">STORAGE</h2>
-        <p id="projectDescription">ORIGINAL 3D CHARACTER</p>
       </div>
 
       <div class="controls">
@@ -463,7 +462,7 @@ padding: 26px 5vw 22px;
   </section>
 
   <footer class="bottom-line">
-    <div>© MARCEL MASLLORENS</div>
+    <div>MARCEL MASLLORENS</div>
 
     <nav>
       <a href="#about">ABOUT</a>
@@ -529,7 +528,6 @@ function showProject(index) {
     image.src = project.image;
     image.alt = project.title;
     title.textContent = project.title;
-    description.textContent = project.description;
     counter.textContent =
       String(current + 1).padStart(2, "0") + " / " +
       String(projects.length).padStart(2, "0");
