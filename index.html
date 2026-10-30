@@ -629,13 +629,17 @@ padding: 26px 5vw 22px;
     <div>MARCEL MASLLORENS</div>
 
     <nav>
+  
+<nav>
   <a href="#main">MAIN</a>
+  <a href="#my-work">MY WORK</a>
   <a href="#showreel">SHOWREEL</a>
   <a href="#articles">ARTICLES</a>
   <a href="mailto:masllorensmarcel@gmail.com">CONTACT</a>
   <a href="#skills-tools">SKILLS & TOOLS</a>
   <a href="#clients-credits">CLIENTS & CREDITS</a>
 </nav>
+
 
     <div>BASED IN BARCELONA</div>
   </footer>
@@ -646,7 +650,7 @@ padding: 26px 5vw 22px;
 
   <div class="section-heading">
     <p class="section-label">01 / WHAT I DO</p>
-    <h2>MY WORK</h2>
+    <h2 class="interactive">MY WORK</h2>
     <p class="section-intro">
       Exploring different areas of 3D art, visual effects and storytelling.
     </p>
@@ -654,7 +658,7 @@ padding: 26px 5vw 22px;
 
   <!-- PART 1: AREAS OF INTEREST -->
   <div class="work-areas">
-    <h3>AREAS OF INTEREST</h3>
+    <h3 class="interactive">AREAS OF INTEREST</h3>
 
     <div class="areas-grid">
       <div class="area-card">
@@ -678,7 +682,7 @@ padding: 26px 5vw 22px;
   <!-- PART 2: FEATURED PROJECTS -->
   <div class="featured-projects">
     <p class="section-label">02 / SELECTED WORK</p>
-    <h3>FEATURED PROJECTS</h3>
+    <h3 class="interactive">FEATURED PROJECTS</h3>
 
     <div class="featured-grid">
       <div class="featured-card">
@@ -798,6 +802,7 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+
 // Interactive title letters
 document.querySelectorAll(".interactive").forEach(line => {
   const text = line.textContent;
@@ -833,6 +838,7 @@ document.addEventListener("mousemove", event => {
     }
   });
 });
+
 
 </script>
 
