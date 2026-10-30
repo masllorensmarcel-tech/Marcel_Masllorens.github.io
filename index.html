@@ -393,14 +393,17 @@ padding: 26px 5vw 22px;
   }
 
   .bottom-line {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .bottom-line nav {
-    justify-content: flex-start;
-    gap: 13px;
-  }
+.bottom-line nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
