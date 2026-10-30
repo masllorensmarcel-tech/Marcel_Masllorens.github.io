@@ -409,6 +409,170 @@ padding: 26px 5vw 22px;
     transition-duration: .01ms !important;
   }
 }
+  
+/* =================================
+   MY WORK SECTION
+================================= */
+
+.work-section {
+  position: relative;
+  padding: 110px 7vw 130px;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255,174,126,.12), transparent 40%),
+    linear-gradient(145deg, #101b49, #18285d 55%, #111a40);
+  color: var(--white);
+}
+
+.section-heading {
+  max-width: 850px;
+  margin-bottom: 75px;
+}
+
+.section-label {
+  color: var(--orange);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.section-heading h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(75px, 12vw, 150px);
+  line-height: .85;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+}
+
+.section-intro {
+  margin-top: 22px;
+  max-width: 450px;
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: .75;
+}
+
+.work-areas h3,
+.featured-projects h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 5vw, 55px);
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.area-card {
+  min-height: 280px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  background:
+    linear-gradient(180deg, transparent 30%, rgba(5,10,35,.85)),
+    linear-gradient(135deg, #344477, #17234d);
+  transition: transform .35s ease, border-color .35s ease;
+}
+
+.area-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange);
+}
+
+.area-card h4,
+.featured-card h4 {
+  position: relative;
+  z-index: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.featured-projects {
+  margin-top: 120px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.featured-card {
+  min-height: 360px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  background:
+    linear-gradient(180deg, transparent 20%, rgba(5,10,35,.9)),
+    linear-gradient(135deg, #344477, #17234d);
+  transition: transform .35s ease, border-color .35s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange);
+}
+
+.featured-card h4 {
+  font-size: 38px;
+}
+
+.featured-card p {
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: .8;
+}
+
+/* Responsive layout */
+
+@media (max-width: 850px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .work-section {
+    padding: 80px 20px;
+  }
+
+  .section-heading {
+    margin-bottom: 55px;
+  }
+
+  .areas-grid,
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .area-card {
+    min-height: 220px;
+  }
+
+  .featured-card {
+    min-height: 300px;
+  }
+
+  .featured-projects {
+    margin-top: 85px;
+  }
+}
+
 </style>
 </head>
 
