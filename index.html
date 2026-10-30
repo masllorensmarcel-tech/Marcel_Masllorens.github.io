@@ -6,8 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marcel's Portfolio 2026</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;700&display=swap');
+:root {
+  --white: #eee8ff;
+  --orange: #ffae7e;
+  --blue: #15265e;
+}
 
 * {
   margin: 0;
@@ -22,68 +30,70 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  color: #f1eaff;
+  background: var(--blue);
+  color: var(--white);
   font-family: 'Inter', sans-serif;
-  background: #101b59;
 }
 
 .hero {
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px 5vw 24px;
+  padding: 26px 5vw 22px;
+
   background:
-    radial-gradient(ellipse at 50% 72%, #ff9b59 0%, #e76c52 13%, transparent 43%),
-    radial-gradient(ellipse at 15% 20%, #367bd5 0%, transparent 45%),
-    linear-gradient(145deg, #10245f 0%, #244f9b 48%, #101b59 100%);
+    radial-gradient(ellipse at 50% 72%, #ff995d 0%, #d96653 15%, transparent 48%),
+    radial-gradient(ellipse at 15% 15%, #397ed7 0%, transparent 48%),
+    linear-gradient(145deg, #10245f, #244f9b 50%, #101b59);
 }
 
-/* Atmospheric light */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(5,12,43,.05), transparent 45%, rgba(7,12,39,.45)),
+    linear-gradient(180deg, rgba(5,12,43,.08), transparent 45%, rgba(7,12,39,.48)),
     repeating-linear-gradient(115deg, transparent 0 80px, rgba(255,255,255,.018) 81px 82px);
 }
 
-.top-line, .bottom-line, .hero-content, .hero-title {
-  position: relative;
-  z-index: 2;
-}
-
 .top-line, .bottom-line {
+  position: relative;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 900;
   letter-spacing: 3px;
 }
 
+/* Main title */
+
 .hero-title {
+  position: relative;
+  z-index: 2;
   text-align: center;
   margin: auto 0 0;
-  padding-top: 7vh;
+  padding-top: 5vh;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(65px, 13.5vw, 190px);
+  font-size: clamp(60px, 12.5vw, 180px);
   font-weight: 900;
   line-height: .76;
-  letter-spacing: -5px;
-  text-transform: uppercase;
-  color: #e8ddff;
+  letter-spacing: -4px;
+  color: var(--white);
   text-shadow: 0 8px 35px rgba(10,15,55,.2);
 }
 
@@ -93,8 +103,8 @@ body {
 }
 
 .hero-title .year {
-  font-size: .48em;
-  letter-spacing: 8px;
+  font-size: .46em;
+  letter-spacing: 9px;
   margin-top: 18px;
 }
 
@@ -104,80 +114,169 @@ body {
   will-change: transform;
 }
 
-.letter:hover {
-  color: #ffbd91;
+/* Project carousel */
+
+.carousel {
+  position: relative;
+  z-index: 3;
+  width: min(620px, 85vw);
+  margin: 25px auto 15px;
+  text-align: center;
 }
 
+.project-image {
+  position: relative;
+  width: 100%;
+  height: clamp(190px, 30vh, 330px);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.45);
+  background: rgba(12,25,65,.25);
+  box-shadow: 0 18px 60px rgba(5,10,35,.22);
+}
+
+.project-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .5s ease, transform 1s ease;
+}
+
+.project-image img.changing {
+  opacity: .2;
+  transform: scale(1.04);
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-top: 13px;
+  text-align: left;
+}
+
+.project-info h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.project-info p {
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: .8;
+  margin-top: 3px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.arrow {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 50%;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  transition: .2s;
+}
+
+.arrow:hover {
+  color: var(--blue);
+  background: white;
+}
+
+.counter {
+  font-size: 11px;
+  letter-spacing: 2px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,.4);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.4);
+}
+
+/* Intro */
+
 .hero-content {
+  position: relative;
+  z-index: 3;
   width: min(100%, 1000px);
-  margin: 35px auto 45px;
+  margin: 15px auto 25px;
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 30px;
+  gap: 25px;
 }
 
 .intro {
   max-width: 330px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.8;
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.88);
 }
 
 .intro strong {
   display: block;
   color: white;
-  font-size: 17px;
-  margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
 .view-work {
   display: inline-block;
   border: 1px solid rgba(255,255,255,.8);
-  padding: 15px 25px;
+  padding: 14px 24px;
   color: white;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
+  white-space: nowrap;
   transition: .25s;
 }
 
 .view-work:hover {
   background: white;
-  color: #17265e;
+  color: var(--blue);
 }
 
-.character-placeholder {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 56%;
-  transform: translate(-50%, -50%);
-  width: min(32vw, 360px);
-  aspect-ratio: 1;
-  border: 1px dashed rgba(255,255,255,.25);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: rgba(255,255,255,.55);
-  font-size: 10px;
-  letter-spacing: 2px;
-  line-height: 1.8;
-  background: radial-gradient(circle, rgba(255,190,140,.2), transparent 70%);
-  pointer-events: none;
-}
+/* Footer navigation */
 
 .bottom-line {
-  border-top: 1px solid rgba(255,255,255,.25);
-  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.3);
+  padding-top: 17px;
 }
 
 .bottom-line nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 18px;
+  gap: 17px;
 }
 
 .bottom-line a {
@@ -187,32 +286,46 @@ body {
 }
 
 .bottom-line a:hover {
-  color: #ffbd91;
+  color: var(--orange);
 }
 
 @media (max-width: 650px) {
   .hero {
-    padding: 22px 20px;
+    padding: 20px 18px;
+  }
+
+  .top-line {
+    font-size: 8px;
+    gap: 8px;
   }
 
   .hero-title {
+    font-size: 14vw;
     letter-spacing: -2px;
-    font-size: 15vw;
+    padding-top: 8vh;
   }
 
   .hero-title .year {
-    letter-spacing: 4px;
+    letter-spacing: 5px;
   }
 
-  .character-placeholder {
-    width: 65vw;
-    top: 49%;
+  .carousel {
+    width: 100%;
+    margin: 22px auto 10px;
+  }
+
+  .project-image {
+    height: 220px;
+  }
+
+  .project-info h2 {
+    font-size: 23px;
   }
 
   .hero-content {
     flex-direction: column;
     align-items: flex-start;
-    margin: 25px auto;
+    margin: 20px auto;
   }
 
   .bottom-line {
@@ -223,6 +336,13 @@ body {
   .bottom-line nav {
     justify-content: flex-start;
     gap: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -238,25 +358,45 @@ body {
     <div>PORTFOLIO — 2026</div>
   </header>
 
-  <div class="character-placeholder">
-    YOUR 3D CHARACTER<br>
-    WILL LIVE HERE
-  </div>
-
   <h1 class="hero-title">
     <span class="line interactive">MARCEL'S</span>
     <span class="line interactive">PORTFOLIO</span>
     <span class="line year">2026</span>
   </h1>
 
+  <section class="carousel" aria-label="Selected projects">
+
+    <div class="project-image">
+      <img id="projectImage"
+        src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200"
+        alt="Project preview">
+    </div>
+
+    <div class="project-info">
+      <div>
+        <h2 id="projectTitle">STORAGE</h2>
+        <p id="projectDescription">ORIGINAL 3D CHARACTER</p>
+      </div>
+
+      <div class="controls">
+        <button class="arrow" id="previous" aria-label="Previous project">←</button>
+        <span class="counter" id="counter">01 / 04</span>
+        <button class="arrow" id="next" aria-label="Next project">→</button>
+      </div>
+    </div>
+
+    <div class="dots" id="dots"></div>
+
+  </section>
+
   <section class="hero-content">
     <div class="intro">
       <strong>HELLO, I'M MARCEL.</strong>
-      I'm a 3D Generalist passionate about creating characters,
-      digital worlds and visual experiences.
+      I'm a 3D Generalist passionate about creating
+      characters, digital worlds and visual experiences.
     </div>
 
-    <a class="view-work" href="#projects">VIEW WORK ↗</a>
+    <a class="view-work" href="#main">VIEW WORK ↗</a>
   </section>
 
   <footer class="bottom-line">
@@ -267,7 +407,7 @@ body {
       <a href="#3d">3D</a>
       <a href="#animation">ANIMATION</a>
       <a href="#illustration">ILLUSTRATION</a>
-      <a href="#projects">PROJECTS</a>
+      <a href="#main">MAIN</a>
       <a href="mailto:masllorensmarcel@gmail.com">CONTACT</a>
     </nav>
 
@@ -277,23 +417,118 @@ body {
 </main>
 
 <script>
-// Letters react to the mouse position
-const letters = document.querySelectorAll('.interactive');
 
-letters.forEach(line => {
+// Project information
+// Later we will replace these temporary images
+// with your own images uploaded to GitHub.
+
+const projects = [
+  {
+    title: "STORAGE",
+    description: "ORIGINAL 3D CHARACTER",
+    image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200"
+  },
+  {
+    title: "FNAF ENDOSKELETON",
+    description: "REALISTIC COSPLAY · CHARACTER DESIGN",
+    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=1200"
+  },
+  {
+    title: "UDOLF",
+    description: "VISUAL EFFECTS · 3D",
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200"
+  },
+  {
+    title: "CHURCH PROJECT",
+    description: "3D ARCHITECTURE · VISUALIZATION",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200"
+  }
+];
+
+let current = 0;
+let timer;
+
+const image = document.getElementById("projectImage");
+const title = document.getElementById("projectTitle");
+const description = document.getElementById("projectDescription");
+const counter = document.getElementById("counter");
+const dots = document.getElementById("dots");
+
+function showProject(index) {
+  current = (index + projects.length) % projects.length;
+
+  const project = projects[current];
+
+  image.classList.add("changing");
+
+  setTimeout(() => {
+    image.src = project.image;
+    image.alt = project.title;
+    title.textContent = project.title;
+    description.textContent = project.description;
+    counter.textContent =
+      String(current + 1).padStart(2, "0") + " / " +
+      String(projects.length).padStart(2, "0");
+
+    image.classList.remove("changing");
+  }, 220);
+
+  document.querySelectorAll(".dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === current);
+  });
+
+  restartTimer();
+}
+
+function restartTimer() {
+  clearInterval(timer);
+  timer = setInterval(() => {
+    showProject(current + 1);
+  }, 5000);
+}
+
+projects.forEach((project, index) => {
+  const dot = document.createElement("button");
+  dot.className = "dot" + (index === 0 ? " active" : "");
+  dot.setAttribute("aria-label", "Show " + project.title);
+  dot.addEventListener("click", () => showProject(index));
+  dots.appendChild(dot);
+});
+
+document.getElementById("previous").addEventListener("click", () => {
+  showProject(current - 1);
+});
+
+document.getElementById("next").addEventListener("click", () => {
+  showProject(current + 1);
+});
+
+restartTimer();
+
+// Pause automatic movement when the visitor leaves the tab
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    clearInterval(timer);
+  } else {
+    restartTimer();
+  }
+});
+
+// Interactive title letters
+document.querySelectorAll(".interactive").forEach(line => {
   const text = line.textContent;
-  line.textContent = '';
+  line.textContent = "";
 
   [...text].forEach(char => {
-    const span = document.createElement('span');
-    span.className = 'letter';
-    span.textContent = char === ' ' ? '\u00A0' : char;
+    const span = document.createElement("span");
+    span.className = "letter";
+    span.textContent = char === " " ? "\u00A0" : char;
     line.appendChild(span);
   });
 });
 
-document.addEventListener('mousemove', (event) => {
-  document.querySelectorAll('.letter').forEach(letter => {
+document.addEventListener("mousemove", event => {
+  document.querySelectorAll(".letter").forEach(letter => {
     const rect = letter.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
@@ -304,15 +539,17 @@ document.addEventListener('mousemove', (event) => {
 
     if (distance < 130) {
       const strength = (130 - distance) / 130;
+
       letter.style.transform =
-        `translate(${-(dx / 130) * strength * 12}px,
-                    ${-(dy / 130) * strength * 12}px)
-         rotate(${(dx / 130) * strength * 8}deg)`;
+        `translate(${-dx / 130 * strength * 12}px,
+                   ${-dy / 130 * strength * 12}px)
+         rotate(${dx / 130 * strength * 8}deg)`;
     } else {
-      letter.style.transform = 'translate(0, 0) rotate(0deg)';
+      letter.style.transform = "translate(0,0) rotate(0deg)";
     }
   });
 });
+
 </script>
 
 </body>
