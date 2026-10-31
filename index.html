@@ -544,11 +544,26 @@ padding: 26px 5vw 22px;
 ================================= */
 
 .project-trigger {
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
   text-align: left;
-  font-family: inherit;
-  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  color: var(--white) !important;
   cursor: pointer;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.project-trigger h4,
+.project-trigger p,
+.project-trigger span {
+  color: inherit;
+}
+
+.project-trigger .project-number,
+.project-trigger:hover .project-open {
+  color: var(--orange);
 }
 
 .project-number {
