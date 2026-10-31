@@ -539,6 +539,202 @@ padding: 26px 5vw 22px;
 
 /* Responsive layout */
 
+  /* =================================
+   CINEMATIC PROJECT MODAL
+================================= */
+
+.project-trigger {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.project-number {
+  position: absolute;
+  top: 25px;
+  left: 28px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--orange);
+}
+
+.project-open {
+  margin-top: 22px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  opacity: .65;
+  transition: .3s;
+}
+
+.project-trigger:hover .project-open {
+  opacity: 1;
+  color: var(--orange);
+  transform: translateX(5px);
+}
+
+.coming-soon {
+  cursor: default;
+  opacity: .65;
+}
+
+/* Modal background */
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease, visibility .45s;
+}
+
+.project-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 7, 25, .92);
+  backdrop-filter: blur(15px);
+}
+
+/* Main modal panel */
+
+.modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #18285d, #0c1435);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 30px 100px rgba(0,0,0,.5);
+  transform: translateY(35px) scale(.97);
+  transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.project-modal.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* Close button */
+
+.modal-close {
+  position: absolute;
+  z-index: 5;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%;
+  background: rgba(5,10,35,.5);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.modal-close:hover {
+  background: var(--orange);
+  color: var(--blue);
+  transform: rotate(90deg);
+}
+
+/* Project image */
+
+.modal-image-container {
+  width: 100%;
+  height: min(60vh, 620px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px;
+  background: radial-gradient(
+    ellipse,
+    rgba(255,174,126,.15),
+    transparent 70%
+  );
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 35px rgba(0,0,0,.35));
+}
+
+/* Project information */
+
+.modal-info {
+  padding: 10px 55px 45px;
+}
+
+.modal-label {
+  color: var(--orange);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.modal-info h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 8vw, 90px);
+  line-height: .9;
+  letter-spacing: 1px;
+}
+
+.modal-description {
+  max-width: 650px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: .85;
+}
+
+.modal-details {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--orange);
+}
+
+/* Mobile modal */
+
+@media (max-width: 650px) {
+  .project-modal {
+    padding: 12px;
+  }
+
+  .modal-content {
+    max-height: 94vh;
+  }
+
+  .modal-image-container {
+    height: 42vh;
+    padding: 20px;
+  }
+
+  .modal-info {
+    padding: 10px 25px 30px;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+  }
+}
+
 @media (max-width: 850px) {
   .areas-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -711,6 +907,31 @@ padding: 26px 5vw 22px;
 
 </section>
 
+  <!-- PROJECT MODAL -->
+<div class="project-modal" id="projectModal" aria-hidden="true">
+
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+    <button class="modal-close" id="modalClose" aria-label="Close project">
+      &times;
+    </button>
+
+    <div class="modal-image-container">
+      <img src="" alt="" id="modalImage">
+    </div>
+
+    <div class="modal-info">
+      <p class="modal-label" id="modalCategory"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-description" id="modalDescription"></p>
+      <p class="modal-details" id="modalDetails"></p>
+    </div>
+
+  </div>
+</div>
+  
 <script>
 
 // Project information
@@ -846,7 +1067,76 @@ document.addEventListener("mousemove", event => {
   });
 });
 
+// =================================
+// CINEMATIC PROJECT MODAL
+// =================================
 
+const projectModal = document.getElementById("projectModal");
+const modalClose = document.getElementById("modalClose");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalDetails = document.getElementById("modalDetails");
+
+const featuredProjects = {
+  storage: {
+    title: "STORAGE",
+    category: "01 / CHARACTER DESIGN",
+    description: "My own original avatar.",
+    details: "3D CHARACTER · ORIGINAL DESIGN",
+    image: "images/storage.png"
+  },
+
+  endoskeleton: {
+    title: "ENDOSKELETON",
+    category: "02 / 3D MODELING",
+    description: "The most accurate cosplay possible.",
+    details: "CHARACTER MODELING · REALISTIC COSPLAY",
+    image: "images/fnaf.png"
+  }
+};
+
+// Open project modal
+
+document.querySelectorAll(".project-trigger").forEach(button => {
+  button.addEventListener("click", () => {
+    const project = featuredProjects[button.dataset.project];
+
+    if (!project) return;
+
+    modalImage.src = project.image;
+    modalImage.alt = project.title;
+    modalTitle.textContent = project.title;
+    modalCategory.textContent = project.category;
+    modalDescription.textContent = project.description;
+    modalDetails.textContent = project.details;
+
+    projectModal.classList.add("active");
+    projectModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+// Close modal
+
+function closeProjectModal() {
+  projectModal.classList.remove("active");
+  projectModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+modalClose.addEventListener("click", closeProjectModal);
+
+document.querySelector(".modal-backdrop").addEventListener("click", closeProjectModal);
+
+// Close with ESC
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && projectModal.classList.contains("active")) {
+    closeProjectModal();
+  }
+});
 </script>
 
 </body>
