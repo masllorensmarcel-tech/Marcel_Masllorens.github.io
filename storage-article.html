@@ -1,1 +1,265 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORAGE — Marcel's Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --white: #eee8ff;
+      --orange: #ffae7e;
+      --blue: #15265e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .article-header {
+      padding: 35px 7vw;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .article-header a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .article-header a:hover {
+      color: var(--orange);
+    }
+
+    .article-hero {
+      padding: 130px 7vw 100px;
+      background:
+        radial-gradient(ellipse at 80% 30%, rgba(255,174,126,.14), transparent 45%),
+        linear-gradient(145deg, #101b49, #18285d 55%, #111a40);
+    }
+
+    .section-label {
+      color: var(--orange);
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .article-hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(80px, 16vw, 190px);
+      line-height: .85;
+      letter-spacing: -3px;
+    }
+
+    .article-subtitle {
+      max-width: 550px;
+      margin-top: 30px;
+      font-size: 15px;
+      line-height: 1.8;
+      opacity: .8;
+    }
+
+    .article-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 7vw 140px;
+    }
+
+    .article-intro {
+      max-width: 700px;
+      margin-bottom: 100px;
+      font-size: 16px;
+      line-height: 2;
+      opacity: .85;
+    }
+
+    .process-section {
+      margin-bottom: 110px;
+    }
+
+    .process-number {
+      color: var(--orange);
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .process-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(45px, 7vw, 75px);
+      margin-bottom: 25px;
+    }
+
+    .process-section p {
+      max-width: 650px;
+      font-size: 14px;
+      line-height: 1.9;
+      opacity: .8;
+    }
+
+    .image-placeholder {
+      margin-top: 35px;
+      min-height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.2);
+      background: linear-gradient(135deg, #344477, #17234d);
+      color: rgba(255,255,255,.55);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .article-footer {
+      padding: 35px 7vw;
+      border-top: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .article-footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .article-footer a:hover {
+      color: var(--orange);
+    }
+
+    @media (max-width: 650px) {
+      .article-hero {
+        padding: 90px 20px 70px;
+      }
+
+      .article-content {
+        padding: 70px 20px;
+      }
+
+      .article-header,
+      .article-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .image-placeholder {
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="article-header">
+    <a href="index.html#articles">← BACK TO ARTICLES</a>
+    <span>MM · PORTFOLIO 2026</span>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <p class="section-label">01 / PRODUCTION BREAKDOWN</p>
+      <h1>STORAGE</h1>
+      <p class="article-subtitle">
+        A look behind the scenes of my original character creation process.
+      </p>
+    </section>
+
+    <article class="article-content">
+
+      <p class="article-intro">
+        This article will explore the different stages of creating STORAGE,
+        from the initial character model to the final result.
+      </p>
+
+      <section class="process-section">
+        <p class="process-number">01 / FIRST STEPS</p>
+        <h2>FIRST, WE MODEL</h2>
+        <p>
+          The first stage of the project: creating the original character model.
+        </p>
+        <div class="image-placeholder">IMAGE / ZBRUSH MODELING</div>
+      </section>
+
+      <section class="process-section">
+        <p class="process-number">02 / RETOPOLOGY</p>
+        <h2>LET'S RETOPO</h2>
+        <p>
+          The retopology stage, preparing the model for the next steps.
+        </p>
+        <div class="image-placeholder">IMAGE / BLENDER RETOPOLOGY</div>
+      </section>
+
+      <section class="process-section">
+        <p class="process-number">03 / TEXTURING</p>
+        <h2>AFTER SOME UV'S, WE TEXTURIZE</h2>
+        <p>
+          Preparing the UVs and creating the character's textures.
+        </p>
+        <div class="image-placeholder">IMAGE / SUBSTANCE PAINTER</div>
+      </section>
+
+      <section class="process-section">
+        <p class="process-number">04 / RIGGING</p>
+        <h2>WE NEED A RIG NOW!</h2>
+        <p>
+          Building the rig to prepare the character for animation.
+        </p>
+        <div class="image-placeholder">IMAGE / BLENDER RIGGING</div>
+      </section>
+
+      <section class="process-section">
+        <p class="process-number">05 / GROOMING</p>
+        <h2>LET'S PUT SOME GROOMING</h2>
+        <p>
+          Working on the character's hair and grooming.
+        </p>
+        <div class="image-placeholder">IMAGE / HAIR GROOMING</div>
+      </section>
+
+      <section class="process-section">
+        <p class="process-number">06 / ENVIRONMENT</p>
+        <h2>LET'S DO A BACKGROUND</h2>
+        <p>
+          Creating the environment and background for the final presentation.
+        </p>
+        <div class="image-placeholder">IMAGE / BACKGROUND</div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="article-footer">
+    <span>MARCEL MASLLORENS · 3D GENERALIST & ARTIST</span>
+    <a href="index.html#articles">BACK TO ARTICLES ↗</a>
+  </footer>
+
+</body>
+</html>
