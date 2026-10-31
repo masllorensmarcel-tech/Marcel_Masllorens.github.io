@@ -806,36 +806,93 @@ body {
    SHOWREEL SECTION
 ================================= */
 
+/* =================================
+   CINEMATIC SHOWREEL SECTION
+================================= */
+
 .showreel-section {
   position: relative;
-  padding: 110px 7vw 130px;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 120px 7vw 140px;
   background:
-    radial-gradient(ellipse at 85% 15%, rgba(255,174,126,.12), transparent 40%),
-    linear-gradient(145deg, #111a40, #18285d 55%, #101b49);
+    radial-gradient(ellipse at 50% 45%, rgba(67, 91, 160, .22), transparent 65%),
+    radial-gradient(ellipse at 85% 15%, rgba(255,174,126,.13), transparent 40%),
+    linear-gradient(145deg, #080e2b, #18285d 55%, #0a1233);
   color: var(--white);
 }
 
+/* Textura subtil de fons */
+
+.showreel-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .16;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 90px,
+      rgba(255,255,255,.035) 91px 92px
+    );
+}
+
+/* Línia de llum superior */
+
+.showreel-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 7vw;
+  right: 7vw;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,174,126,.7),
+    transparent
+  );
+}
+
 .showreel-container {
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
 }
+
+/* Títol */
 
 .showreel-container h2 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(65px, 10vw, 120px);
   line-height: .9;
   letter-spacing: -2px;
-  margin-bottom: 45px;
+  margin-bottom: 50px;
+  text-shadow: 0 10px 40px rgba(0,0,0,.3);
 }
+
+/* Marc cinematogràfic del vídeo */
 
 .showreel-video {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.25);
   background: #080d25;
-  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.5),
+    0 0 60px rgba(255,174,126,.07);
+  transition: border-color .4s ease, box-shadow .4s ease;
+}
+
+.showreel-video:hover {
+  border-color: rgba(255,174,126,.65);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.55),
+    0 0 65px rgba(255,174,126,.13);
 }
 
 .showreel-video iframe {
@@ -845,6 +902,8 @@ body {
   height: 100%;
   border: 0;
 }
+
+/* Mòbil */
 
 @media (max-width: 650px) {
   .showreel-section {
@@ -1001,7 +1060,7 @@ body {
   <section class="showreel-section" id="showreel">
     <div class="showreel-container">
         <p class="section-label">03 / SHOWREEL</p>
-        <h2>MY SHOWREEL</h2>
+        <h2 class="interactive">MY SHOWREEL</h2>
 
         <div class="showreel-video">
             <iframe
