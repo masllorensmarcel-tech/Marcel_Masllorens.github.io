@@ -90,14 +90,16 @@
     }
 
     .article-hero h1,
-.process-section h2 {
+.process-section h2,
+.challenge-item h3 {
   display: inline-block;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .article-hero h1:hover,
-.process-section h2:hover {
+.process-section h2:hover,
+.challenge-item h3:hover {
   color: var(--orange);
   transform: scale(1.04);
 }
@@ -371,13 +373,36 @@
   </div>
 
   <div class="challenge-item">
-    <h3>02 / EXTRA MASK</h3>
-    <img
-      src="images/storage/Storage_Challenge02.png"
-      alt="STORAGE extra mask challenge"
-      class="process-image"
-    >
-  </div>
+  <h3>02 / EXTRA MASK</h3>
+
+  <p>
+    I wanted to create two different versions of the character: one
+    without Bonnie's mask and another wearing it. This introduced
+    several technical challenges.
+
+    Inside STORAGE's rig, I created a button that allowed me to switch
+    between the character's normal head rig and the mask rig. This was
+    particularly challenging because both versions had completely
+    different eye setups: STORAGE had regular 3D eyes, while Bonnie's
+    cartoon-style eyes were represented by flat planes that changed
+    textures depending on the position of the eye bones.
+
+    The switching system also had to control the character's hair,
+    hiding it whenever the mask was enabled so that it would not
+    interfere with the mask's appearance.
+
+    Finally, the mask and its rig had to appear and disappear together.
+    The button was designed to allow animators to switch between both
+    configurations at any point during the animation, without having
+    to manually change the rig setup.
+  </p>
+
+  <img
+    src="images/storage/Storage_Challenge02.png"
+    alt="STORAGE extra mask challenge"
+    class="process-image"
+  >
+</div>
 
   <div class="challenge-item">
     <h3>03 / BLEND SHAPES</h3>
