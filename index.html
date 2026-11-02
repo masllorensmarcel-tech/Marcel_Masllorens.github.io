@@ -63,7 +63,7 @@ button{font:inherit}
 .featured-card h4{font-size:38px}
 .featured-card p{margin-top:9px;font-size:12px;line-height:1.6;opacity:.85}
 .project-number,.project-open{font-size:9px;letter-spacing:2px}.project-open{margin-top:22px;color:var(--orange)}
-.storage-project{background-image:url('images/my-work/Storage.png')}
+.storage-project{background-image:url('images/my-work/Storage.png');background-position:center 20%}
 .endoskeleton-project{background-image:url('images/my-work/Endoskeleton.jpg')}
 .future-project{background-image:url('images/my-work/WHATS TO COME.png')}
 .showreel-wrap{max-width:1100px;margin:auto}
@@ -102,7 +102,7 @@ button{font:inherit}
 <header class="top-line"><div class="logo">MM</div><div>3D GENERALIST · ARTIST</div><div>PORTFOLIO — 2026</div></header>
 <h1 class="hero-title interactive"><span class="line">MARCEL'S</span><span class="line">PORTFOLIO 2026</span></h1>
 <section class="carousel" aria-label="Selected projects">
-<div class="project-image"><img id="projectImage" src="images/my-work/Storage.png" alt="Storage 3D character project"></div>
+<div class="project-image"><img id="projectImage" src="images/storage.png" alt="Storage 3D character project"></div>
 <div class="project-info"><div><h2 id="projectTitle">STORAGE</h2><p id="projectDescription">ORIGINAL 3D CHARACTER</p></div><div class="controls"><button class="arrow" id="previous" aria-label="Previous project">←</button><span class="counter" id="counter">01 / 04</span><button class="arrow" id="next" aria-label="Next project">→</button></div></div>
 <div class="dots" id="dots"></div></section>
 <section class="hero-content"><div class="intro"><strong>HELLO, I'M MARCEL.</strong>I'm a 3D Generalist passionate about creating characters, digital worlds and visual experiences.</div><a class="view-work" href="#my-work">MY WORK ↗</a></section>
@@ -140,10 +140,10 @@ button{font:inherit}
 
 <script>
 const projects=[
-{title:"STORAGE",description:"ORIGINAL 3D CHARACTER",image:"images/my-work/Storage.png"},
-{title:"ENDOSKELETON",description:"REALISTIC COSPLAY · CHARACTER DESIGN",image:"images/my-work/Endoskeleton.jpg"},
-{title:"3D MODELING",description:"MODELLING AND DIGITAL SCULPTING",image:"images/my-work/3D Modeling.jpg"},
-{title:"VFX",description:"VISUAL EFFECTS · 3D",image:"images/my-work/VFX.png"}];
+{title:"STORAGE",description:"ORIGINAL 3D CHARACTER",image:"images/storage.png"},
+{title:"ENDOSKELETON",description:"REALISTIC COSPLAY · CHARACTER DESIGN",image:"images/fnaf.png"},
+{title:"3D MODELING",description:"MODELLING AND DIGITAL SCULPTING",image:"images/udolf.png"},
+{title:"VFX",description:"VISUAL EFFECTS · 3D",image:"images/church.png"}];
 let current=0,timer;
 const image=document.getElementById("projectImage"),title=document.getElementById("projectTitle"),description=document.getElementById("projectDescription"),counter=document.getElementById("counter"),dots=document.getElementById("dots");
 function showProject(index){current=(index+projects.length)%projects.length;const p=projects[current];image.classList.add("changing");setTimeout(()=>{image.src=p.image;image.alt=p.title;title.textContent=p.title;description.textContent=p.description;counter.textContent=String(current+1).padStart(2,"0")+" / "+String(projects.length).padStart(2,"0");image.classList.remove("changing")},220);document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===current));restartTimer()}
