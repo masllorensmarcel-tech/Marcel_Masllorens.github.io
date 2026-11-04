@@ -77,6 +77,23 @@ button{font:inherit}
 .article-card p{max-width:420px;margin-top:12px;font-size:12px;line-height:1.7;opacity:.85}
 .storage-article{background-image:url('images/my-work/STORAGE_Articles.png')}
 .endoskeleton-article{background-image:url('images/my-work/ENDOSKELETON_Articles.png')}
+  .contacts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.contact-card{
+  min-height:250px;
+  background:linear-gradient(135deg,#1b2d68,#101a43);
+}
+
+.contact-card .contact-type{
+  color:var(--orange);
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:12px;
+}
 .site-footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px 7vw;background:var(--deep);color:#eee8ffb3;font-size:10px;letter-spacing:1.5px}
 .site-footer a{color:inherit;text-decoration:none}
 .project-modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
@@ -131,6 +148,32 @@ button{font:inherit}
 <a class="article-card endoskeleton-article" href="endoskeleton-article.html"><span class="section-label">02 / PROTOTYPING</span><h3>ENDOSKELETON</h3><p>The process of designing and building a functional animatronic endoskeleton for a cosplay project.</p><span class="project-open">READ ARTICLE ↗</span></a>
 </div></section>
 
+<section class="content-section" id="contacts">
+  <p class="section-label">05 / GET IN TOUCH</p>
+  <h2 class="section-title interactive">CONTACTS</h2>
+  <p class="section-intro">Interested in working together or knowing more about my work? Feel free to reach out.</p>
+
+  <div class="contacts-grid">
+    <a class="article-card contact-card" href="https://drive.google.com/file/d/1JKhZNZFIIH0lB_YSxcbVJjSnVB1vyITM/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+      <p class="contact-type">CURRICULUM VITAE</p>
+      <h3>MY CV</h3>
+      <p>Take a look at my experience, education and skills.</p>
+    </a>
+
+    <a class="article-card contact-card" href="mailto:masllorensmarcel@gmail.com">
+      <p class="contact-type">EMAIL</p>
+      <h3>GET IN TOUCH</h3>
+      <p>Feel free to contact me for opportunities or collaborations.</p>
+    </a>
+
+    <a class="article-card contact-card" href="https://www.linkedin.com/in/marcelmasllorens" target="_blank" rel="noopener noreferrer">
+      <p class="contact-type">LINKEDIN</p>
+      <h3>LET'S CONNECT</h3>
+      <p>Connect with me and check out my professional profile.</p>
+    </a>
+  </div>
+</section>
+  
 <footer class="site-footer"><span>MARCEL MASLLORENS · 3D GENERALIST & ARTIST</span><a href="#main">BACK TO TOP ↑</a><a href="mailto:masllorensmarcel@gmail.com">GET IN TOUCH ↗</a></footer>
 
 <div class="project-modal" id="projectModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
