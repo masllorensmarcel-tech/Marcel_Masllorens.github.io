@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endoskeleton.txt — Marcel Masllorens.exe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--white:#eee8ff;--orange:#ffae7e;--navy:#15265e;--face:#c0c0c0;--bar1:#0a1a5c;--bar2:#2b6fd1;
+ --ui:"Pixelify Sans",Tahoma,Verdana,sans-serif;--disp:"Jersey 10","Barlow Condensed",Impact,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;font-synthesis:none;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 12 18'%3E%3Cpolygon points='.5%2C.5 .5%2C14.5 4%2C11.5 6.7%2C17.3 8.9%2C16.3 6.3%2C10.7 11%2C10.7' fill='%23fff' stroke='%23000' stroke-linejoin='miter'/%3E%3C/svg%3E") 1 1,default}
+:is(a,button,figure img,.toc a){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 20 21'%3E%3Cpolygon points='7.5%2C.5 9.5%2C.5 9.5%2C8.5 10.5%2C8.5 10.5%2C6.5 12.5%2C6.5 12.5%2C8.5 13.5%2C8.5 13.5%2C7.5 15.5%2C7.5 15.5%2C9.5 16.5%2C9.5 16.5%2C8.5 18.5%2C8.5 18.5%2C15.5 16.5%2C19.5 8.5%2C19.5 4.5%2C13.5 4.5%2C11.5 6.5%2C11.5 7.5%2C12.5' fill='%23fff' stroke='%23000' stroke-linejoin='miter'/%3E%3C/svg%3E") 8 1,pointer}
+html,body{height:100%;overflow:hidden;font:15px/1.6 var(--ui);color:#000;background:#0b1340 url("images/background.png") center/cover no-repeat fixed}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(5,12,43,.1),transparent 45%,rgba(7,12,39,.55));pointer-events:none}
+.raised{background:var(--face);border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf}
+.sunken{border:2px solid;border-color:#808080 #fff #fff #808080;box-shadow:inset 1px 1px #404040}
+.btn{background:var(--face);border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:inset -1px -1px #808080;padding:3px 12px;color:#000;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font:inherit}
+.btn:active,.btn.on{border-color:#404040 #fff #fff #404040;box-shadow:inset 1px 1px #808080}
+
+#win{position:fixed;left:0;right:0;top:16px;bottom:56px;margin:0 auto;width:min(1200px,calc(100% - 32px));display:flex;flex-direction:column;padding:2px;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf,6px 6px 0 rgba(0,0,0,.4)}
+#win.max{top:0;bottom:40px;width:100%}
+#win.min{display:none}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 3px 3px 8px;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--bar1),var(--bar2));user-select:none}
+.ctl{display:flex;gap:2px}.ctl .btn{padding:0;width:20px;height:18px;justify-content:center;font-size:12px;line-height:1}
+.toolbar{display:flex;gap:8px;align-items:center;padding:6px 2px}
+.addr{flex:1;min-width:0;padding:2px 8px;background:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px}
+#sc{flex:1;overflow:auto;background:var(--navy);color:var(--white);scroll-behavior:smooth}
+.status{margin-top:3px;padding:2px 8px;font-size:12px;border:1px solid;border-color:#808080 #fff #fff #808080}
+
+.hero{padding:60px 5vw 40px;background:radial-gradient(ellipse at 80% 30%,rgba(255,174,126,.18),transparent 45%),linear-gradient(145deg,#101b49,#18285d 55%,#111a40)}
+.lab{color:var(--orange);font-size:12px;letter-spacing:3px;margin-bottom:14px}
+h1{font:400 clamp(60px,12.5vw,170px)/.85 var(--disp);letter-spacing:1px;text-shadow:0 8px 35px rgba(10,15,55,.3)}
+.sub{max-width:560px;margin-top:22px;opacity:.85}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;max-width:1200px;margin:0 auto;padding:44px 5vw 60px}
+.toc{position:sticky;top:18px;align-self:start;display:flex;flex-direction:column;gap:2px;font-size:13px}
+.toc b{color:var(--orange);letter-spacing:3px;margin-bottom:8px}
+.toc a{color:var(--white);text-decoration:none;padding:3px 6px}
+.toc a:hover{background:#000080}
+.intro{max-width:700px;margin-bottom:80px;opacity:.9}.intro p+p{margin-top:14px}
+.sec{margin-bottom:90px;scroll-margin-top:16px}
+.num{color:var(--orange);font-size:12px;letter-spacing:3px;margin-bottom:10px}
+h2{font:400 clamp(44px,6vw,74px)/.9 var(--disp);letter-spacing:1px;margin-bottom:20px}
+.sec p{max-width:660px;opacity:.88;margin-bottom:16px}
+.word{display:inline-block;white-space:nowrap}.letter{display:inline-block;transition:transform .18s ease-out;will-change:transform}
+figure{margin:28px 0;max-width:900px}
+figure img{display:block;width:100%;height:auto;padding:4px;background:var(--face);border:2px solid;border-color:#fff #404040 #404040 #fff;transition:transform .15s ease-out;will-change:transform}
+figure img.hot{box-shadow:0 14px 34px rgba(0,0,0,.5);position:relative;z-index:2}
+figcaption{font-size:12px;letter-spacing:1px;opacity:.7;margin-top:8px}
+.mp{max-width:900px;margin:28px 0;padding:2px}
+.mp .bar{padding:2px 6px;font-size:12px}
+.mp video{display:block;width:100%;background:#000;margin-top:2px}
+.foot{border-top:1px solid rgba(255,255,255,.25);padding:26px 5vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;letter-spacing:2px}
+.foot a{color:var(--white);text-decoration:none}.foot a:hover{color:var(--orange)}
+
+/* Easter egg: desktop icon + video window */
+#icons{position:fixed;left:12px;top:14px;z-index:5}
+.ico{background:none;border:0;width:92px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;color:#fff;font:inherit;font-size:13px;text-shadow:0 1px 3px #000,1px 1px #000}
+.ico span{font-size:36px;line-height:1;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.45))}
+.ico em{font-style:normal;padding:0 3px;text-align:center}
+.ico.sel em,.ico:focus-visible em{background:#000080;outline:1px dotted #fff}
+.vw{position:fixed;z-index:20;padding:2px;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf,6px 6px 0 rgba(0,0,0,.4)}
+.vw.min{display:none}
+.vw video{display:block;width:100%;max-height:68vh;background:#000;margin-top:2px}
+.vw .status{margin-top:3px;padding:2px 8px;font-size:12px;border:1px solid;border-color:#808080 #fff #fff #808080}
+.task{flex:0 1 170px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+@media (min-width:901px){#win{width:min(1200px,calc(100% - 160px));margin:0 24px 0 auto}#win.max{width:100%;margin:0}}
+@media (max-width:900px){#icons{display:none}}
+#tb{position:fixed;left:0;right:0;bottom:0;height:40px;z-index:50;display:flex;align-items:center;gap:4px;padding:3px 4px calc(3px + env(safe-area-inset-bottom));border-width:2px 0 0;border-color:#fff}
+#tb .btn{height:100%}#task{flex:0 1 220px;overflow:hidden;white-space:nowrap}
+#tray{margin-left:auto;height:100%;display:flex;align-items:center;gap:8px;padding:0 10px;border:1px solid;border-color:#808080 #fff #fff #808080;font-size:12px}
+#tray .btn{height:22px;padding:0 6px;font-size:11px}
+#lb{position:fixed;inset:0;z-index:700;background:rgba(5,10,30,.93);display:flex;align-items:center;justify-content:center;padding:20px}
+#lb[hidden]{display:none}#lb img{max-width:100%;max-height:100%;border:2px solid #fff}
+
+#crt{position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.85;animation:flick 6s infinite}
+#crt::before{content:"";position:absolute;inset:0;background-color:rgba(255,160,70,.035);background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.5) 100%)}
+#crt::after{content:"";position:absolute;inset:-50%;opacity:.07;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain .6s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-6%,4%)}50%{transform:translate(5%,-5%)}75%{transform:translate(-4%,-3%)}100%{transform:translate(0,0)}}
+@keyframes flick{0%,100%{opacity:.85}48%{opacity:.85}50%{opacity:.78}52%{opacity:.85}}
+body.nocrt #crt{display:none}
+body:not(.nocrt) h1{text-shadow:3px 0 rgba(255,40,80,.34),-3px 0 rgba(40,200,255,.34),0 8px 35px rgba(10,15,55,.3)}
+@media (max-width:720px){#win{top:0;bottom:40px;width:100%}.layout{grid-template-columns:1fr}.toc,.ctl [data-a=max]{display:none}#task{flex:1}}
+@media (prefers-reduced-motion:reduce){#crt,#crt::after{animation:none}#sc{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<section id="win" class="raised" aria-label="Endoskeleton article">
+  <header class="bar"><span>📰 Endoskeleton.txt</span>
+    <span class="ctl"><button class="btn" data-a="min" aria-label="Minimize">_</button><button class="btn" data-a="max" aria-label="Maximize">□</button><a class="btn" href="index.html#articles" data-home="#articles" aria-label="Close">×</a></span></header>
+  <div class="toolbar"><a class="btn" href="index.html#articles" data-home="#articles">← BACK</a><span class="addr sunken">C:\PORTFOLIO\ARTICLES\ENDOSKELETON.TXT</span></div>
+
+  <div id="sc" class="sunken">
+    <section class="hero">
+      <p class="lab">02 / COSPLAY PROJECT</p>
+      <h1>ENDOSKELETON</h1>
+      <p class="sub">Exploring the process of designing and creating an animatronic mask for cosplay.</p>
+      <figure><img src="images/endoskeleton/FinalResult.png" alt="Final result of the Endoskeleton cosplay mask"></figure>
+    </section>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Contents"></nav>
+      <article>
+        <div class="intro">
+          <p>This article explores the process of designing and creating an animatronic mask for my cosplay project, focusing on one of its biggest challenges: achieving both visibility and accuracy to the original in-game design.</p>
+          <p>In real animatronics, performers usually see through the character's mouth. This allows the mechanisms required to operate the eyes to be placed inside the head. However, this solution can affect the immersion of a cosplay and, in some cases, make the final result less faithful to the original character design.</p>
+          <p>I wanted to find a different solution.</p>
+          <p>My two main goals were to make it possible to see through the mask's eyes while keeping them as close as possible to their appearance in the original games.</p>
+          <p>To achieve this, I developed three different prototypes, gradually improving the design until I found a solution that met both requirements.</p>
+        </div>
+
+        <section class="sec"><p class="num">01 / THE PROBLEM</p><h2>THE CHALLENGE</h2>
+          <p>In traditional animatronics, performers usually see through the character's mouth. This allows the mechanisms needed to operate the eyes to be placed inside the head.</p>
+          <p>However, this creates a problem for cosplay. Having the performer's face visible through the mouth can break the immersion and make the costume less faithful to the original character design.</p>
+          <figure><img src="images/endoskeleton/Reference_By_SlenderDummy.png" alt="Traditional animatronic eye mechanism reference"></figure>
+          <p>I used SlenderDummy's work as a reference to understand how these mechanisms are usually designed and how they fit inside an animatronic head.</p>
+          <figure><img src="images/endoskeleton/Reference_By_SlenderDummy02.png" alt="SlenderDummy wearing an animatronic mask"></figure>
+          <figure><img src="images/endoskeleton/Reference_By_SlenderDummy03.png" alt="SlenderDummy wearing a Bonnie animatronic head"></figure>
+          <p>These examples helped me understand the limitations of the traditional approach and motivated me to find another solution.</p>
+          <figure><img src="images/endoskeleton/SlenderDummy_YTChannel.png" alt="SlenderDummy YouTube channel"></figure>
+          <p>Reference and inspiration: SlenderDummy.</p>
+        </section>
+
+        <section class="sec"><p class="num">02 / FIRST PROTOTYPE</p><h2>THE FIRST ATTEMPT</h2>
+          <p>The first prototype was my initial attempt at solving the visibility problem. It allowed me to see through the eyes of the mask, so the main goal was already achieved.</p>
+          <p>However, the overall design still looked quite different from the original in-game endoskeleton. The eyes, in particular, needed further work to better match the original model.</p>
+          <figure><img src="images/endoskeleton/Prototipe01.png" alt="First endoskeleton mask prototype"></figure>
+          <figure><img src="images/endoskeleton/Prototipe01_2.png" alt="Additional view of the first prototype"></figure>
+          <figure><img src="images/endoskeleton/Prototipe01_3DPrinted.jpg" alt="3D printed version of the first prototype"></figure>
+          <p>Comparing it with the original endoskeleton made it clear that I needed to rethink some parts of the design, especially the eye shape and appearance.</p>
+          <figure><img src="images/endoskeleton/OriginalEndoGame.png" alt="Original endoskeleton from the game"></figure>
+          <figure><img src="images/endoskeleton/OriginalEndo_Eyes.png" alt="Close-up of the original endoskeleton eyes"></figure>
+        </section>
+
+        <section class="sec"><p class="num">03 / SECOND PROTOTYPE</p><h2>GETTING CLOSER</h2>
+          <p>The second prototype was a major improvement over the first one. Its overall design was much closer to the original endoskeleton from the games, making it look more accurate and recognizable.</p>
+          <p>However, there was still one important detail that I wasn't completely satisfied with: the eyes. Although the design had improved, they still didn't look quite like the original in-game eyes.</p>
+          <p>I decided to keep refining the design and focus on solving this last issue in the next prototype.</p>
+          <figure><img src="images/endoskeleton/Prototipe02.png" alt="Second endoskeleton mask prototype"></figure>
+          <p>Compared to the original design, the second prototype was getting much closer, but the eyes still needed further adjustments.</p>
+          <figure><img src="images/endoskeleton/OriginalEndo_Eyes.png" alt="Original endoskeleton eyes from the game"></figure>
+        </section>
+
+        <section class="sec"><p class="num">04 / FINAL PROTOTYPE</p><h2>THE FINAL DESIGN</h2>
+          <p>After refining the previous designs, I finally achieved what I was looking for with the third prototype.</p>
+          <p>This version successfully combines both of my main goals: being able to see through the mask's eyes while keeping their appearance as close as possible to the original endoskeleton from the games.</p>
+          <p>The result is a much more faithful design without sacrificing visibility, solving the main challenge that started this project.</p>
+          <figure><img src="images/endoskeleton/Prototipe03.png" alt="Third and final endoskeleton prototype"></figure>
+          <div class="mp raised"><div class="bar">▶ Prototipe03_Vid.mp4</div><video controls playsinline><source src="images/endoskeleton/Prototipe03_Vid.mp4" type="video/mp4">Your browser does not support HTML video.</video></div>
+          <p>The video shows the prototype in action, demonstrating how the mechanism moves while allowing me to look through the eyes of the mask.</p>
+          <div class="mp raised"><div class="bar">▶ Prototipe03_Vid_Motor.mp4</div><video controls playsinline><source src="images/endoskeleton/Prototipe03_Vid_Motor.mp4" type="video/mp4">Your browser does not support HTML video.</video></div>
+          <figure><img src="images/endoskeleton/FinalResult.png" alt="Final result of the endoskeleton mask"></figure>
+        </section>
+
+        <section class="sec"><p class="num">05 / FUTURE PLANS</p><h2>WHAT'S NEXT?</h2>
+          <p>Although the third prototype achieves the main goals of this project, I still have ideas for future improvements.</p>
+          <p>My next objective is to develop a fourth prototype featuring functional eyelids, adding another level of realism and expression to the animatronic.</p>
+          <p>I also want to create an external shell that can be placed over the robotic structure. This would make it possible to change the character's appearance while keeping the same internal mechanism.</p>
+          <p>One of the ideas I'm considering is using a Foxy shell, allowing the robot to become a different character without having to rebuild the entire mechanism.</p>
+          <figure><img src="images/endoskeleton/FutuerPrototipe04_2.png" alt="Concept for the fourth prototype with a Foxy shell"></figure>
+          <p>These are still future plans, but they represent the direction I would like to take this project next.</p>
+        </section>
+      </article>
+    </div>
+
+    <footer class="foot"><span>MARCEL MASLLORENS · 3D GENERALIST &amp; ARTIST</span><a href="index.html#articles" data-home="#articles">BACK TO ARTICLES ↗</a></footer>
+  </div>
+  <footer class="status" id="status">Endoskeleton.txt</footer>
+</section>
+
+<div id="icons"><button class="ico" id="egg" aria-label="1983.exe"><span>📼</span><em>1983.exe</em></button></div>
+
+<footer id="tb" class="raised">
+  <a class="btn" href="index.html" data-home=""><b>▦ Start</b></a>
+  <button class="btn on" id="task">📰 Endoskeleton.txt</button>
+  <div id="tray"><button class="btn" id="crtbtn" aria-pressed="true" title="Toggle retro CRT filter">CRT</button><time id="clock"></time></div>
+</footer>
+
+<div id="lb" hidden><img alt=""></div>
+<div id="crt" aria-hidden="true"></div>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+/* Name of the desktop file. If you rename it, change it here only. */
+const fromPage = document.referrer.split("#")[0];   // the page we came from (if it was the desktop, go back there)
+const HOME = fromPage && !/-article\.html$/.test(fromPage) ? fromPage : "index.html";
+$$("[data-home]").forEach(a => a.href = HOME + a.dataset.home);
+const win = $("#win"), sc = $("#sc");
+
+/* Figures: numbered captions from alt text */
+$$("figure img").forEach((im, i) => {
+  const c = document.createElement("figcaption");
+  c.textContent = "FIG. " + String(i + 1).padStart(2, "0") + " — " + im.alt;
+  im.parentNode.appendChild(c); im.dataset.tilt = 1;
+});
+
+/* Contents tree */
+$$(".sec").forEach((s, i) => s.id = "s" + i);
+$(".toc").innerHTML = "<b>CONTENTS</b>" + $$(".sec").map(s => `<a href="#${s.id}">▸ ${$(".num", s).textContent.split(" / ")[0]} ${$("h2", s).textContent}</a>`).join("");
+$(".toc").addEventListener("click", e => {
+  const a = e.target.closest("a"); if (!a) return;
+  e.preventDefault(); $(a.getAttribute("href")).scrollIntoView({ block: "start" });
+});
+
+/* Reactive pixel titles */
+function split(el) {
+  const t = el.textContent; el.setAttribute("aria-label", t); el.textContent = "";
+  t.split(" ").forEach((w, i, all) => {
+    const s = document.createElement("span"); s.className = "word"; s.setAttribute("aria-hidden", "true");
+    [...w].forEach(c => { const l = document.createElement("span"); l.className = "letter"; l.textContent = c; s.appendChild(l); });
+    el.appendChild(s); if (i < all.length - 1) el.appendChild(document.createTextNode(" "));
+  });
+}
+$$("h1,h2").forEach(split);
+let mx = -999, my = -999, raf = 0;
+function react() {
+  raf = 0;
+  $$(".letter").forEach(l => {
+    const r = l.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    const dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height / 2), d = Math.hypot(dx, dy), k = (130 - d) / 130;
+    l.style.transform = d < 130 ? `translate(${-dx / 130 * k * 16}px,${-dy / 130 * k * 16}px) rotate(${dx / 130 * k * 9}deg)` : "";
+  });
+}
+document.addEventListener("mousemove", e => {
+  mx = e.clientX; my = e.clientY; if (!raf) raf = requestAnimationFrame(react);
+  const t = e.target.closest("[data-tilt]");
+  $$("[data-tilt].hot").forEach(x => { if (x !== t) { x.classList.remove("hot"); x.style.transform = ""; } });
+  if (t) { const r = t.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+    t.classList.add("hot"); t.style.transform = `perspective(900px) rotateY(${px * 8}deg) rotateX(${-py * 8}deg) scale(1.02)`; }
+});
+
+/* Lightbox */
+document.addEventListener("click", e => {
+  const im = e.target.closest("figure img");
+  if (im) { $("#lb img").src = im.src; $("#lb").hidden = false; } else if (e.target.closest("#lb")) $("#lb").hidden = true;
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("#lb").hidden = true; });
+
+/* Window buttons, reading progress, clock, CRT */
+$(".ctl").addEventListener("click", e => {
+  const a = e.target.closest("[data-a]")?.dataset.a;
+  if (a === "max") win.classList.toggle("max");
+  if (a === "min") { win.classList.add("min"); $("#task").classList.remove("on"); }
+});
+$("#task").onclick = () => { const h = win.classList.toggle("min"); $("#task").classList.toggle("on", !h); };
+sc.addEventListener("scroll", () => {
+  const p = Math.round(sc.scrollTop / Math.max(1, sc.scrollHeight - sc.clientHeight) * 100);
+  $("#status").textContent = "Endoskeleton.txt · " + p + "% read";
+});
+const tick = () => $("#clock").textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+tick(); setInterval(tick, 20000);
+$("#crtbtn").onclick = () => { const off = document.body.classList.toggle("nocrt"); $("#crtbtn").setAttribute("aria-pressed", String(!off)); $("#crtbtn").classList.toggle("on", off); };
+
+/* Easter egg: 1983.exe plays images/endoskeleton/1983.mp4 in a little player window */
+const egg = $("#egg"); let vw = null, vtask = null;
+function openEgg() {
+  if (vw) { vw.classList.remove("min"); vtask.classList.add("on"); return; }
+  const w = Math.min(720, innerWidth * .92), h = w * 9 / 16 + 70;
+  vw = document.createElement("section"); vw.className = "vw raised"; vw.setAttribute("role", "dialog"); vw.setAttribute("aria-label", "1983.mp4");
+  vw.style.cssText = `width:${w}px;left:${(innerWidth - w) / 2}px;top:${Math.max(10, (innerHeight - 40 - h) / 2)}px`;
+  vw.innerHTML = `<header class="bar"><span>📼 1983.mp4</span><span class="ctl"><button class="btn" data-a="min" aria-label="Minimize">_</button><button class="btn" data-a="close" aria-label="Close">×</button></span></header>
+    <video controls autoplay playsinline src="images/endoskeleton/1983.mp4"></video><footer class="status">Now playing: 1983.mp4</footer>`;
+  document.body.appendChild(vw);
+  vtask = document.createElement("button"); vtask.className = "btn task on"; vtask.textContent = "📼 1983.mp4";
+  $("#tb").insertBefore(vtask, $("#tray"));
+  vtask.onclick = () => { const hide = !vw.classList.contains("min"); vw.classList.toggle("min", hide); vtask.classList.toggle("on", !hide); };
+  vw.querySelector(".ctl").addEventListener("click", e => {
+    const a = e.target.closest("[data-a]")?.dataset.a;
+    if (a === "min") { vw.classList.add("min"); vtask.classList.remove("on"); }
+    if (a === "close") { vw.querySelector("video").pause(); vw.remove(); vtask.remove(); vw = vtask = null; }
+  });
+  const bar = vw.querySelector(".bar");
+  bar.addEventListener("pointerdown", e => {
+    if (e.target.closest("button")) return;
+    const dx = e.clientX - vw.offsetLeft, dy = e.clientY - vw.offsetTop; bar.setPointerCapture(e.pointerId);
+    const move = ev => { vw.style.left = Math.max(-vw.offsetWidth + 80, Math.min(innerWidth - 80, ev.clientX - dx)) + "px"; vw.style.top = Math.max(0, Math.min(innerHeight - 80, ev.clientY - dy)) + "px"; };
+    const up = () => { bar.removeEventListener("pointermove", move); bar.removeEventListener("pointerup", up); };
+    bar.addEventListener("pointermove", move); bar.addEventListener("pointerup", up);
+  });
+}
+egg.addEventListener("click", e => { egg.classList.add("sel"); if (matchMedia("(pointer:coarse)").matches || e.detail === 0) openEgg(); });
+egg.addEventListener("dblclick", openEgg);
+document.addEventListener("pointerdown", e => { if (!e.target.closest("#egg")) egg.classList.remove("sel"); });
+</script>
+</body>
+</html>
