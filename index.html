@@ -77,6 +77,45 @@ button{font:inherit}
 .article-card p{max-width:420px;margin-top:12px;font-size:12px;line-height:1.7;opacity:.85}
 .storage-article{background-image:url('images/my-work/STORAGE_Articles.png')}
 .endoskeleton-article{background-image:url('images/my-work/ENDOSKELETON_Articles.png')}
+  /* SKILLS & TOOLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 42px;
+}
+
+.skill-card {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid #ffffff33;
+    background: linear-gradient(135deg, #1b2d68, #101a43);
+    transition: transform .35s, border-color .35s;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--orange);
+}
+
+.skill-card img {
+    width: 100%;
+    max-width: 115px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.skill-card h3 {
+    color: var(--white);
+    font: 700 25px 'Barlow Condensed', sans-serif;
+    letter-spacing: 1.5px;
+}
   .contacts-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -110,7 +149,11 @@ button{font:inherit}
 .modal-link{display:inline-block;margin-top:25px;padding:12px 18px;border:1px solid var(--orange);color:var(--orange);text-decoration:none;font-size:10px;letter-spacing:1.5px}
 .modal-link:hover{background:var(--orange);color:var(--deep)}
 @media(max-width:850px){.areas-grid{grid-template-columns:repeat(2,1fr)}.featured-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.hero{padding:20px 18px}.top-line{font-size:8px;gap:8px}.hero-title{font-size:14vw;letter-spacing:-2px;margin-top:8vh}.carousel{margin-top:22px}.project-image{height:clamp(280px,45vh,420px);margin-top:-45px}.project-info h2{font-size:23px}.hero-content{flex-direction:column;align-items:flex-start;margin:20px auto}.bottom-line{align-items:flex-start;flex-direction:column}.bottom-line nav{justify-content:flex-start}.work-section,.content-section{padding:80px 20px}.section-heading{margin-bottom:55px}.areas-grid,.featured-grid,.articles-grid{grid-template-columns:1fr}.area-card{min-height:220px}.featured-card{min-height:300px}.featured-projects{margin-top:85px}.modal-content{grid-template-columns:1fr}.modal-image-container,.modal-image-container img{min-height:230px;max-height:38vh}.modal-info{padding:28px 24px}}
+@media(max-width:650px){.hero{padding:20px 18px}.top-line{font-size:8px;gap:8px}.hero-title{font-size:14vw;letter-spacing:-2px;margin-top:8vh}.carousel{margin-top:22px}.project-image{height:clamp(280px,45vh,420px);margin-top:-45px}.project-info h2{font-size:23px}.hero-content{flex-direction:column;align-items:flex-start;margin:20px auto}.bottom-line{align-items:flex-start;flex-direction:column}.bottom-line nav{justify-content:flex-start}.work-section,.content-section{padding:80px 20px}.section-heading{margin-bottom:55px}.areas-grid,.featured-grid,.articles-grid{grid-template-columns:1fr}
+                        .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+                        .area-card{min-height:220px}.featured-card{min-height:300px}.featured-projects{margin-top:85px}.modal-content{grid-template-columns:1fr}.modal-image-container,.modal-image-container img{min-height:230px;max-height:38vh}.modal-info{padding:28px 24px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -174,13 +217,34 @@ button{font:inherit}
   </div>
 </section>
 
-<section class="content-section" id="showreel"><section class="content-section" id="articles"><p class="section-label">04 / BEHIND THE PROJECTS</p><h2 class="section-title interactive">ARTICLES</h2><p class="section-intro">A closer look at the process, challenges and decisions behind my projects.</p><div class="articles-grid">
+<section class="content-section" id="showreel">
+    <div class="showreel-wrap">
+        <p class="section-label">04 / SELECTED MOMENTS</p>
+        <h2 class="section-title interactive">SHOWREEL</h2>
+
+        <div class="showreel-frame">
+            <iframe
+                src="https://drive.google.com/file/d/1UM5P2we0xHZW5hI3nIM3mOaQKzRzh0UZ/preview"
+                title="Marcel's 3D showreel"
+                allow="autoplay; fullscreen"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <p class="showreel-note">
+            A selection of my work in 3D modelling, texturing, animation and visual development.
+        </p>
+    </div>
+</section>
+
+<section class="content-section" id="articles"><p class="section-label">05 / BEHIND THE PROJECTS</p><h2 class="section-title interactive">ARTICLES</h2><p class="section-intro">A closer look at the process, challenges and decisions behind my projects.</p><div class="articles-grid">
 <a class="article-card storage-article" href="storage-article.html"><span class="section-label">01 / CHARACTER CREATION</span><h3>STORAGE</h3><p>From the first sculpt to the final character: modelling, retopology, texturing, rigging and the challenges along the way.</p><span class="project-open">READ ARTICLE ↗</span></a>
 <a class="article-card endoskeleton-article" href="endoskeleton-article.html"><span class="section-label">02 / PROTOTYPING</span><h3>ENDOSKELETON</h3><p>The process of designing and building a functional animatronic endoskeleton for a cosplay project.</p><span class="project-open">READ ARTICLE ↗</span></a>
 </div></section>
 
 <section class="content-section" id="contacts">
-  <p class="section-label">05 / GET IN TOUCH</p>
+  <p class="section-label">06 / GET IN TOUCH</p>
   <h2 class="section-title interactive">CONTACTS</h2>
   <p class="section-intro">Interested in working together or knowing more about my work? Feel free to reach out.</p>
 
